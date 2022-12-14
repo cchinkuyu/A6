@@ -38,10 +38,9 @@ unsigned int MiniAssembler_mov(unsigned int uiReg, int iImmed)
 {
    unsigned int uiInstr;
    unsigned int uiImmed;
-   unsigned int uiHw = 0x00;
 
    /* Base Instruction Code */
-   uiInstr = 0xA5000000;
+   uiInstr = 0x52800000;
 
    /* Register to be inserted in instruction */
    setField(uiReg, 0, &uiInstr, 0, 5);
@@ -50,7 +49,6 @@ unsigned int MiniAssembler_mov(unsigned int uiReg, int iImmed)
    uiImmed = (unsigned int)iImmed;
 
    setField(uiImmed, 0, &uiInstr, 5, 16);
-   setField(uiHw, 0, &uiInstr, 21, 2);
 
    return uiInstr;
 }
@@ -84,14 +82,12 @@ unsigned int MiniAssembler_strb(unsigned int uiFromReg,
    unsigned int uiToReg)
 {
    unsigned int uiInstr;
-   unsigned int uiOne = 0x01;
 
    /* Base Instruction Code */
-   uiInstr = 0xF0000000;
+   uiInstr = 0x39000000;
 
    setField(uiFromReg, 0, &uiInstr, 0, 5);
    setField(uiToReg, 0, &uiInstr, 5, 5);
-   setField(uiOne, 0, &uiInstr, 10, 2);
 
    return uiInstr;
 }
@@ -105,7 +101,7 @@ unsigned int MiniAssembler_b(unsigned long ulAddr,
    unsigned int uiImm = (unsigned int)((ulAddr - ulAddrOfThisInstr) / 4);
 
    /* Base Instruction Code */
-   uiInstr = 0x50000000;
+   uiInstr = 0x14000000;
 
    setField(uiImm, 0, &uiInstr, 0, 26);
 
