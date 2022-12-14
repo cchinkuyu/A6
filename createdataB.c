@@ -14,6 +14,7 @@
  * to file dataB. Returns 0.*/
 int main(void) {
     FILE *psFile;
+    unsigned long ulAddress;
     int i = 0;
 
     /* Open file dataB to write data into */
@@ -31,9 +32,8 @@ int main(void) {
 
     /* Write the unsigned long address (0x400858) of the [grade = 'B']
      * instruction in grader.c to file dataB */
-    putc(0x58, psFile);
-    putc(0x08, psFile);
-    putc(0x40, psFile);
+    ulAddress = 0x400858;
+    fwrite(&ulAddress, sizeof(unsigned long), 1, psFile);
 
     /* Close the file */
     fclose(psFile);
