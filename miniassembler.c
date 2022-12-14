@@ -21,10 +21,10 @@ static void setField(unsigned int uiSrc, unsigned int uiSrcStartBit,
 {
 
    /* Strip of the bits in the scr field to the left of the desired bits */
-   uiSrc <<= 32 - (uiNumbits + uiSrcStartBit);
+   uiSrc <<= 32 - (uiNumBits + uiSrcStartBit);
 
    /* Shift uiSrc to right justify */
-   uiSrc >>= 32 - uiNumbits;
+   uiSrc >>= 32 - uiNumBits;
 
    /* Shift uiSrc to the left to align it with destination */
    uiSrc <<= uiDestStartBit;
