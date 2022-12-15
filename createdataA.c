@@ -50,7 +50,9 @@ int main(void) {
 
     /* Fill up buf[] array and go over one to overwrite getName's
      * return value with 23 null bytes of padding */
-    for(; i < 23; i++) {
+
+    /* set to 22 */
+    for(; i < 22; i++) {
         putc('\0', psFile);
     }
 
