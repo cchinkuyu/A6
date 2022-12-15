@@ -34,7 +34,7 @@ int main(void) {
 
     /* Write the instruction that puts the address of variable [grade]
      * into the x1 register in machine language to dataA */
-    ulInstruction = MiniAssembler_adr(1, 0x420000, 0x420066);
+    ulInstruction = MiniAssembler_adr(1, 0x00420000, 0x00420066);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* Write the instruction that stores 'A' in the [grade] variable
@@ -45,7 +45,7 @@ int main(void) {
     /* Write the instruction that branches to the instruction in main
      * that prints the user's name and grade in machine language to
      * dataA */
-    ulInstruction = MiniAssembler_b(0x400864, 0x42006E);
+    ulInstruction = MiniAssembler_b(0x00400864, 0x0042006E);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* Fill up buf[] array and go over one to overwrite getName's
