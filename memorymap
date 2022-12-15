@@ -142,7 +142,7 @@ Address           Description
 0x420069
 0x42006A
 0x42006B
-0x42006C	  strb	x1, [x0]
+0x42006C	  strb	w0, [x1]
 0x42006D	  
 0x42006E
 0x42006F
