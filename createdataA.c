@@ -28,7 +28,7 @@ int main(void) {
 
     /* Write the instruction that moves 'A' into the x0 register
      * in machine language to dataA */
-    ulInstruction = MiniAssembler_mov(0x0, 0x65,);
+    ulInstruction = MiniAssembler_mov(0x0, 0x65);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* Write the instruction that puts the address of variable [grade]
