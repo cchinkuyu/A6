@@ -138,7 +138,7 @@ Address           Description
 0x420065	  
 0x420066   	  
 0x420067	  
-0x420068	  adr	x1, 0x420000
+0x420068	  adr	x1, 0x420044
 0x420069
 0x42006A
 0x42006B
@@ -167,9 +167,6 @@ Address           Description
 0x420082	  char '\0'
 0x420083	  char '\0'
 0x420084	  char '\0'
-0x420085  	  char '\0'
-0x420086	  char '\0'
-0x420087	  char '\0'
 
 STACK
 ----------------------------------
