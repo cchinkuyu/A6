@@ -28,17 +28,17 @@ int main(void) {
 
     /* Write the instruction that moves 'A' into the x0 register
      * in machine language to dataA */
-    ulInstruction = MiniAssembler_mov(0x0, 0x65);
+    ulInstruction = MiniAssembler_mov(0, 65);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* Write the instruction that puts the address of variable [grade]
      * into the x1 register in machine language to dataA */
-    ulInstruction = MiniAssembler_adr(0x1, 0x420000, 0x420066);
+    ulInstruction = MiniAssembler_adr(1, 0x420000, 0x420066);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* Write the instruction that stores 'A' in the [grade] variable
      * in machine language to dataA */
-    ulInstruction = MiniAssembler_strb(0x0, 0x1);
+    ulInstruction = MiniAssembler_strb(0, 1);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* Write the instruction that branches to the instruction in main
