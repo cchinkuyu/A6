@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------*/
 /* miniassembler.c                                                    */
-/* Author: Chimwemwe Chinkuyu                                   */
+/* Author: Chimwemwe Chinkuyu                                         */
 /*--------------------------------------------------------------------*/
 
 #include "miniassembler.h"
