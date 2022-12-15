@@ -18,10 +18,10 @@ int main(void) {
     unsigned int ulInstruction;
     int i = 0;
 
-    /* Open file dataB to write data into */
-    psFile = fopen("dataB", "w");
+    /* Open file dataA to write data into */
+    psFile = fopen("dataA", "w");
 
-    /* Write my name (Chimwemwe) to the file dataB followed
+    /* Write my name (Chimwemwe) to the file dataA followed
      * by a null byte */
     fprintf(psFile, "Chimwemwe");
     putc(0x00, psFile);
