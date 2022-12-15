@@ -7,7 +7,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <sys/mman.h>
-#include <miniassembler.h>
+#include "miniassembler.h"
 
 
 /* Takes in no input and writes "Chimwemwe", by 1 null byte,
