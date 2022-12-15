@@ -17,7 +17,7 @@
 int main(void) {
     FILE *psFile;
     unsigned int ulInstruction;
-    unsigned long ulAddres;
+    unsigned long ulAddress;
     int i = 0;
 
     /* Open file dataA to write data into */
