@@ -91,7 +91,7 @@
 // printf("%c is your grade.\n", grade);
    0x400864 <main+68>:  adrp    x0, 0x400000
    0x400868 <main+72>:  add     x0, x0, #0x960
-   0x40086c <main+76>:  adrp    x1, 0x420000 <__libc_start_main@got.plt>
+B   0x40086c <main+76>:  adrp    x1, 0x420000 <__libc_start_main@got.plt>
    0x400870 <main+80>:  ldrb    w1, [x1, #68]
    0x400874 <main+84>:  bl      0x400600 <printf@plt>
  
