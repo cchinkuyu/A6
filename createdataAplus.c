@@ -30,15 +30,19 @@ int main(void) {
     putc('\0', psFile);
     putc('\0', psFile);
 
+    /*
     /* Write the instruction that moves 'A' into the x0 register
-     * in machine language to dataAplus */
+     * in machine language to dataAplus 
     ulInstruction = MiniAssembler_mov(0, 'A');
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* Write the instruction that prints the char 'A' to stdout
-     * in machine language to dataAplus */
+     * in machine language to dataAplus 
     ulInstruction = MiniAssembler_bl(0x400600, 0x420068);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
+
+    
+    */
 
     /* Write the instruction that moves '+' into the x0 register
      * in machine language to dataAplus */
@@ -47,7 +51,7 @@ int main(void) {
 
     /* Write the instruction that puts the address of variable [grade]
      * into the x1 register in machine language to dataAplus */
-    ulInstruction = MiniAssembler_adr(1, 0x420044, 0x420070);
+    ulInstruction = MiniAssembler_adr(1, 0x420044, 0x420068);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* Write the instruction that stores '+' in the [grade] variable
@@ -58,11 +62,11 @@ int main(void) {
     /* Write the instruction that branches to the instruction in main
      * that prints the user's name and grade in machine language to
      * dataAplus */
-    ulInstruction = MiniAssembler_b(0x400864, 0x420078);
+    ulInstruction = MiniAssembler_b(0x400864, 0x420070);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* FillS up buf[] array with 12 null byte */
-    for(; i < 12; i++) {
+    for(; i < 20; i++) {
         putc('\0', psFile);
     }
 
