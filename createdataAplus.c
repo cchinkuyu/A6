@@ -29,7 +29,7 @@ int main(void) {
     putc('\0', psFile);
 
     /* Add 'A' followed by a null byte in BSS */
-    fprintf(psFile, "A");
+    putc('A', psFile);
     putc('\0', psFile);
 
     /* Write the instruction that moves "A" string into the x0 register
@@ -64,7 +64,7 @@ int main(void) {
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* FillS up buf[] array with 12 null byte */
-    for(; i < 20; i++) {
+    for(; i < 12; i++) {
         putc('\0', psFile);
     }
 
