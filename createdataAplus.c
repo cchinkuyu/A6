@@ -48,7 +48,7 @@ int main(void) {
 
     /* Write the instruction that puts the address of variable [grade]
      * into the x1 register in machine language to dataAplus */
-    ulInstruction = MiniAssembler_adr(1, 0x420044, 0x420068);
+    ulInstruction = MiniAssembler_adr(1, 0x420044, 0x420070);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* Write the instruction that stores '+' in the [grade] variable
@@ -59,7 +59,7 @@ int main(void) {
     /* Write the instruction that branches to the instruction in main
      * that prints the user's name and grade in machine language to
      * dataAplus */
-    ulInstruction = MiniAssembler_b(0x400864, 0x420070);
+    ulInstruction = MiniAssembler_b(0x400864, 0x420078);
     fwrite(&ulInstruction, sizeof(unsigned int), 1, psFile);
 
     /* FillS up buf[] array with 12 null byte */
